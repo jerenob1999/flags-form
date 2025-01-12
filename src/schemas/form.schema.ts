@@ -2,13 +2,14 @@ import { z } from "zod";
 
 export const formSchema = z.object({
   firstName: z.string().nonempty("First Name is required"),
-  middleName: z.string().optional(),
+  middleName: z.string().nonempty("Middle Name is required"),
   lastName: z.string().nonempty("Last Name is required"),
   addressLine1: z.string().nonempty("Address Line 1 is required"),
   addressLine2: z.string().optional(),
   city: z.string().nonempty("City is required"),
   state: z.string().nonempty("State is required"),
   country: z.string().nonempty("Country is required"),
+  age: z.string().nonempty("Age is required"),
   zipCode: z
     .string()
     .regex(/^\d{5}$/, "Zip Code must be 5 digits")

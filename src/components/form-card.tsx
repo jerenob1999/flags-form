@@ -25,7 +25,6 @@ function FormCard() {
 
   return (
     <div className="max-w-[600px] mx-auto mt-4">
-      <h2> Form </h2>
       {isLoading ? <LinearProgress sx={{ mb: 2 }} /> : null}
       <Form countries={data ?? []} />
     </div>

@@ -230,6 +230,9 @@ const Form = ({ countries }: Props) => {
             control={control}
             render={({ field }) => (
               <TextField
+                InputProps={{
+                  inputProps: { min: 0 },
+                }}
                 {...field}
                 label="Age"
                 type="number"

@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { formSchema, FormSchema } from "@/schemas/form.schema";
-import { CustomHelperText } from "./custom-helpertext";
 import { defaultValues } from "@/constants/default-values";
 import {
   Box,
@@ -49,7 +48,7 @@ const Form = ({ countries }: Props) => {
 
   return (
     <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate>
-      <Grid container spacing={2}>
+      <Grid container spacing={1}>
         <Grid item xs={12} sm={6}>
           <Controller
             name="firstName"
@@ -59,9 +58,8 @@ const Form = ({ countries }: Props) => {
                 {...field}
                 label="First Name"
                 error={!!errors.firstName}
-                helperText={
-                  <CustomHelperText message={errors.firstName?.message} />
-                }
+                helperText={errors.firstName?.message}
+                slotProps={{ formHelperText: { className: "h[20px]" } }}
                 fullWidth
                 disabled={isLoading}
               />
@@ -77,7 +75,8 @@ const Form = ({ countries }: Props) => {
                 {...field}
                 label="Middle Name"
                 error={!!errors.middleName}
-                helperText={errors.middleName?.message}
+                helperText={errors.middleName?.message || " "}
+                slotProps={{ formHelperText: { className: "h[20px]" } }}
                 fullWidth
                 disabled={isLoading}
               />
@@ -93,7 +92,8 @@ const Form = ({ countries }: Props) => {
                 {...field}
                 label="Last Name"
                 error={!!errors.lastName}
-                helperText={errors.lastName?.message}
+                slotProps={{ formHelperText: { className: "h[20px]" } }}
+                helperText={errors.lastName?.message || " "}
                 fullWidth
                 disabled={isLoading}
               />
@@ -109,7 +109,8 @@ const Form = ({ countries }: Props) => {
                 {...field}
                 label="Address Line 1"
                 error={!!errors.addressLine1}
-                helperText={errors.addressLine1?.message}
+                slotProps={{ formHelperText: { className: "h[20px]" } }}
+                helperText={errors.addressLine1?.message || " "}
                 fullWidth
                 disabled={isLoading}
               />
@@ -124,8 +125,9 @@ const Form = ({ countries }: Props) => {
               <TextField
                 {...field}
                 label="Address Line 2 (Optional)"
+                slotProps={{ formHelperText: { className: "h[20px]" } }}
                 error={!!errors.addressLine2}
-                helperText={errors.addressLine2?.message}
+                helperText={errors.addressLine2?.message || " "}
                 fullWidth
                 disabled={isLoading}
               />
@@ -141,7 +143,8 @@ const Form = ({ countries }: Props) => {
                 {...field}
                 label="City"
                 error={!!errors.city}
-                helperText={errors.city?.message}
+                slotProps={{ formHelperText: { className: "h[20px]" } }}
+                helperText={errors.city?.message || " "}
                 fullWidth
                 disabled={isLoading}
               />
@@ -157,7 +160,8 @@ const Form = ({ countries }: Props) => {
                 {...field}
                 label="State"
                 error={!!errors.state}
-                helperText={errors.state?.message}
+                slotProps={{ formHelperText: { className: "h[20px]" } }}
+                helperText={errors.state?.message || " "}
                 fullWidth
                 disabled={isLoading}
               ></TextField>
@@ -173,7 +177,8 @@ const Form = ({ countries }: Props) => {
                 {...field}
                 label="Country"
                 error={!!errors.country}
-                helperText={errors.country?.message}
+                slotProps={{ formHelperText: { className: "h[20px]" } }}
+                helperText={errors.country?.message || " "}
                 fullWidth
                 disabled={isLoading}
                 select
@@ -198,9 +203,10 @@ const Form = ({ countries }: Props) => {
               <TextField
                 {...field}
                 disabled={isLoading}
+                slotProps={{ formHelperText: { className: "h[20px]" } }}
                 label="Zip Code"
                 error={!!errors.zipCode}
-                helperText={errors.zipCode?.message}
+                helperText={errors.zipCode?.message || " "}
                 fullWidth
               />
             )}
@@ -216,9 +222,12 @@ const Form = ({ countries }: Props) => {
                 label="Date of Birth"
                 type="date"
                 disabled={isLoading}
+                slotProps={{
+                  inputLabel: { shrink: true },
+                  formHelperText: { className: "h[20px]" },
+                }}
                 error={!!errors.dateOfBirth}
-                helperText={errors.dateOfBirth?.message}
-                InputLabelProps={{ shrink: true }}
+                helperText={errors.dateOfBirth?.message || " "}
                 fullWidth
               />
             )}
@@ -230,14 +239,15 @@ const Form = ({ countries }: Props) => {
             control={control}
             render={({ field }) => (
               <TextField
-                InputProps={{
-                  inputProps: { min: 0 },
+                slotProps={{
+                  input: { inputProps: { min: 0 } },
+                  formHelperText: { className: "h[20px]" },
                 }}
                 {...field}
                 label="Age"
                 type="number"
                 error={!!errors.age}
-                helperText={errors.age?.message}
+                helperText={errors.age?.message || " "}
                 fullWidth
                 disabled={isLoading}
               />

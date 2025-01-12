@@ -25,7 +25,6 @@ export interface Country {
   timezones: string[];
   continents: string[];
   flags: Flags;
-  coatOfArms: CoatOfArms;
   startOfWeek: string;
   capitalInfo: CapitalInfo;
 }
@@ -239,8 +238,6 @@ export interface Flags {
   png: string;
   svg: string;
 }
-
-export interface CoatOfArms {}
 
 export interface CapitalInfo {
   latlng: number[];

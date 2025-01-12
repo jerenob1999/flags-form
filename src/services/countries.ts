@@ -3,10 +3,12 @@ import { Country } from "@/interfaces/country.interface";
 
 export const countriesApi = createApi({
   reducerPath: "countriesApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "https://restcountries.com/v3.1/all/" }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: "https://restcountries.com/v3.1/",
+  }),
   endpoints: (builder) => ({
-    getCountries: builder.query<Country[], string>({
-      query: () => `/`,
+    getCountries: builder.query<Country[], string | undefined>({
+      query: () => "all",
     }),
   }),
 });

@@ -5,6 +5,7 @@ import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { formSchema, FormSchema } from "@/schemas/form.schema";
 import { CustomHelperText } from "./custom-helpertext";
+import { defaultValues } from "@/constants/default-values";
 import {
   Box,
   Button,
@@ -12,24 +13,9 @@ import {
   TextField,
   MenuItem,
   CircularProgress,
-  Typography,
 } from "@mui/material";
 import { Country } from "@/interfaces/country.interface";
 import { toast } from "react-toastify";
-
-const defaultValues = {
-  firstName: "",
-  middleName: "",
-  lastName: "",
-  addressLine1: "",
-  addressLine2: "",
-  city: "",
-  state: "",
-  country: "",
-  zipCode: "",
-  dateOfBirth: "",
-  age: "",
-};
 
 interface Props {
   countries: Country[];
